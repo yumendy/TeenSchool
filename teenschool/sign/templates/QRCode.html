@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+	签到二维码
+{% endblock title %}
+{% block content %}
+	<div class="containter">
+		<div class="row text-center">
+			<h2>{{ course.name }}</h2>
+		</div>
+		<div class="row text-center">
+			<img src="http://api.kuaipai.cn/qr?chs=400x400&amp;chl={{ url }}" alt="" class="rounded">
+		</div>
+		<div class="row text-center text-info">
+			<h1>{{ url }}</h1>
+		</div>
+	</div>
+{% endblock content %}

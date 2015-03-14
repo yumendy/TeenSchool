@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+	签到考勤
+{% endblock title %}
+{% block content %}
+	<div class="containter">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+				<div class="row text-center">
+					<h3>{{ course.name }}</h3>
+				</div>
+				{% if state == 'code_error' %}
+					<div class="well">
+						<h2 class="text-danger text-center">参数错误</h2>
+					</div>
+				{% elif state == 'device_error' %}
+					<div class="well">
+						<h2 class="text-danger text-center">请自行签到</h2>
+					</div>
+				{% elif state == 'repetition_error' %}
+					<div class="well">
+						<h2 class="text-danger text-center">已经签到</h2>
+					</div>
+				{% elif state == 'time_out' %}
+					<div class="well">
+						<h2 class="text-warning text-center">不在签到时间</h2>
+					</div>
+				{% elif state == 'success' %}
+					<div class="well">
+						<h2 class="text-success text-center">签到成功</h2>
+					</div>
+				{% endif %}
+				<form method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="id-num">学号：</label>
+						<input type="text" class="form-control" id="id-num" name="num" required>
+					</div>
+					<div class="form-group">
+						<label for="id-name">姓名：</label>
+						<input type="text" class="form-control" id="id-name" name="name" required>
+					</div>
+					<div class="form-group text-center">
+						<button class="btn btn-primary" type="submit">签到</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

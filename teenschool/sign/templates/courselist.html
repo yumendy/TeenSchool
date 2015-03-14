@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+	课程列表
+{% endblock title %}
+{% block content %}
+	<div class="containter">
+		{% if tbd_list %}
+			<div class="row text-center">
+				<h2>课程列表</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>课程名称</th>
+								<th>课程时间</th>
+								<th>开始签到</th>
+								<th>结束签到</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for c in tbd_list %}
+								<tr>
+									<td>{{ c.name }}</td>
+									<td>{{ c.startTime|date:"Y-m-d H:i" }}</td>
+									<td><a href="/qrcode/?courseId={{ c.id }}&typ=1">点击查看二维码</a></td>
+									<td><a href="/qrcode/?courseId={{ c.id }}&typ=2">点击查看二维码</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock content %}

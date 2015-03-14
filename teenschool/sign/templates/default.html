@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+  团课签到
+{% endblock title %}
+{% block content %}
+<div class="containter text-center default-main">
+  {% if user %}
+    <div class="row">
+      <p class="text-center">管理员{{ user.username }}您好！&emsp;&emsp;&emsp; <a href="accounts/logout/">登出</a></p>
+    </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <a href="addcourse/" class="btn btn-block btn-lg btn-primary">添加课程</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <a href="courselist/" class="btn btn-block btn-lg btn-primary">现场签到</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <a href="finishlist/" class="btn btn-block btn-lg btn-primary">签到统计</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+.header-base {
+	background-color: rgb(176,2,0);
+	color: white;
+}
+body {
+	background-color: #eeeeee;
+	font-family: "Microsoft YaHei",微软雅黑;
+}
+
+.default-main a{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

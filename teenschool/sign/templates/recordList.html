@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}
+	签到详情
+{% endblock title %}
+{% block content %}
+	<div class="containter">
+		<div class="row text-center">
+			<h2>{{ course.name }}</h2>
+		</div>
+		{% if startRecord %}
+			<div class="row text-center">
+				<h3>到场签到</h3>
+				<h4 class="text-info">开始签到时间：{{ course.signinTime|date:"Y-m-d H:i:s" }}</h4>
+			</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>签到时间</th>
+								<th>签到IP</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for r in startRecord %}
+								<tr>
+									<td>{{ forloop.counter }}</td>
+									<td>{{ r.num }}</td>
+									<td>{{ r.name }}</td>
+									<td>{{ r.signTime|date:"Y-m-d H:i:s" }}</td>
+									<td>{{ r.signIp }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% endif %}
+		{% if endRecord %}
+			<div class="row text-center">
+				<h3>离场签到</h3>
+				<h4 class="text-info">开始签到时间：{{ course.signoutTime|date:"Y-m-d H:i:s" }}</h4>
+			</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>签到时间</th>
+								<th>签到IP</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for r in endRecord %}
+								<tr>
+									<td>{{ forloop.counter }}</td>
+									<td>{{ r.num }}</td>
+									<td>{{ r.name }}</td>
+									<td>{{ r.signTime|date:"Y-m-d H:i:s" }}</td>
+									<td>{{ r.signIp }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock content %}
