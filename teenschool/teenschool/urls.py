@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^sign/$',views.sign, name = 'sign'),
     url(r'^recordlist/$', views.recordList),
     url(r'^finishlist/$',views.finishList),
+    url(r'^getcsv/$',views.getCSV),
 )

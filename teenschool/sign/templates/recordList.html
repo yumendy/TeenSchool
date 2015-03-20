@@ -11,6 +11,7 @@
 			<div class="row text-center">
 				<h3>到场签到</h3>
 				<h4 class="text-info">开始签到时间：{{ course.signinTime|date:"Y-m-d H:i:s" }}</h4>
+				<p><a href="/getcsv/?courseId={{course.id}}&typ=1">导出表格</a></p>
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
@@ -43,6 +44,7 @@
 			<div class="row text-center">
 				<h3>离场签到</h3>
 				<h4 class="text-info">开始签到时间：{{ course.signoutTime|date:"Y-m-d H:i:s" }}</h4>
+				<p><a href="/getcsv/?courseId={{course.id}}&typ=2">导出表格</a></p>
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">

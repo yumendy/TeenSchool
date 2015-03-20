@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, render_to_response
 from models import *
 from django.template import Context, RequestContext
@@ -10,6 +11,7 @@ from django.core.urlresolvers import reverse
 
 
 import datetime
+import csv
 
 # Create your views here.
 def default(request):
@@ -173,3 +175,26 @@ def finishList(request):
 		'finish_list' : finish_list,
 	}
 	return render_to_response('finishList.html', content)
+
+@login_required
+def getCSV(request):
+	courseId = request.GET.get('courseId','')
+	typ = request.GET.get('typ','')
+	try:
+		course = Project.objects.get(id = courseId)
+	except:
+		return HttpResponseRedirect('/courselist/')
+	else:
+		if typ == '1':
+			records = Record.objects.filter(project = course).filter(typ = 1)
+			contentDisposition = u'attachment; filename=\"'+ course.name + u'签到名单.csv\"'
+		elif typ == '2':
+			records = Record.objects.filter(project = course).filter(typ = 2)
+			contentDisposition = u'attachment; filename=\"'+ course.name + u'签离名单.csv\"'
+		response = HttpResponse(content_type = 'text/csv')
+		response['Content-Disposition'] = contentDisposition.encode('gbk')
+		writer = csv.writer(response)
+		for record in records:
+			tempList = [record.num.encode('gbk'), record.name.encode('gbk'), record.signTime.strftime('%Y-%m-%d %H:%M:%S').encode('gbk')]
+			writer.writerow(tempList)
+		return response

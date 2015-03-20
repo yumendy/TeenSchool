@@ -57,10 +57,21 @@ WSGI_APPLICATION = 'teenschool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'sign.db'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'sign.db'),
+    'default' : {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tkqd',
+        'USER': 'root',
+        'PASSWORD': '018001118dy',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -82,3 +93,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = './static/'
